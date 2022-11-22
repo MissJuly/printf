@@ -1,0 +1,18 @@
+# _printf(3)
+
+**NAME**
+_printf
+
+
+**LIBRARY**
+main.h
+
+
+**SYNPOSIS**
+#include "main.h"
+
+int _printf(const char *restrict format, ...);
+
+**DESCRIPTION**
+
+
