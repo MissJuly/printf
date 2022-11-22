@@ -1,3 +1,3 @@
 # Welcome to _printf
 
-## ALX collaboration project corhort 10
+## ALX collaboration project.
