@@ -16,13 +16,14 @@ char *DectoBase(unsigned long int n, int base, int Lwr)
 	static char *Rep;
 
 	Rep = (Lwr)
-		? "0123456789abcdef"
-		: "0123456789ABCDEF";
+			  ? "0123456789abcdef"
+			  : "0123456789ABCDEF";
 
 	ptr = &buff[49];
 	*ptr = '\0';
 
-	do {
+	do
+	{
 		*--ptr = Rep[n % base];
 		n /= base;
 	} while (n != 0);

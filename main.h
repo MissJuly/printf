@@ -1,9 +1,9 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include<stdarg.h>
-#include<string.h>
-#include<unistd.h>
+#include <stdarg.h>
+#include <string.h>
+#include <unistd.h>
 
 /**
  * struct format - struct to choose the right function depending
@@ -13,8 +13,8 @@
  */
 typedef struct format
 {
-char sp;
-int (*f)(va_list args);
+    char sp;
+    int (*f)(va_list args);
 } fmt;
 
 int _printf(const char *format, ...);

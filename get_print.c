@@ -13,29 +13,28 @@
 
 int (*get_print(char s))(va_list)
 {
-fmt specs[] = {
-{'c', print_char},
-{'s', print_string},
-{'%', print_percent},
-{'i', print_int},
-{'d', print_int},
-{'b', print_binary},
-{'o', print_octal},
-{'X', print_hexUpr},
-{'x', print_hexLwr},
-{'u', print_unsint},
-{'S', print_bigS},
-{'p', print_address}
-};
+    fmt specs[] = {
+        {'c', print_char},
+        {'s', print_string},
+        {'%', print_percent},
+        {'i', print_int},
+        {'d', print_int},
+        {'b', print_binary},
+        {'o', print_octal},
+        {'X', print_hexUpr},
+        {'x', print_hexLwr},
+        {'u', print_unsint},
+        {'S', print_bigS},
+        {'p', print_address}};
 
-int ops = 12;
-int i;
+    int ops = 12;
+    int i;
 
-for (i = 0; i < ops ; i++)
-{
-if (specs[i].sp == s)
-return (specs[i].f);
-}
+    for (i = 0; i < ops; i++)
+    {
+        if (specs[i].sp == s)
+            return (specs[i].f);
+    }
 
-return (NULL);
+    return (NULL);
 }

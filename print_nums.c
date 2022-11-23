@@ -79,4 +79,3 @@ int count_digit(int x)
 	}
 	return (d);
 }
-
