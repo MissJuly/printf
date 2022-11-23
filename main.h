@@ -27,7 +27,7 @@ typedef struct flags
 typedef struct printHandler
 {
     char c;
-    int (*f)(va_list l, flags_t *f);
+    int (*f)(va_list ap, flags_t *f);
 } ph;
 
 /* print_nums */
@@ -49,7 +49,7 @@ char *convert(unsigned long int num, int base, int lowercase);
 int _printf(const char *format, ...);
 
 /* get_print */
-int (*get_print(char s))(va_list, flags_t *f);
+int (*get_print(char s))(va_list, flags_t *);
 
 /* get_flag */
 int get_flag(char s, flags_t *f);
