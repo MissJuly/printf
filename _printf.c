@@ -1,38 +1,49 @@
 #include "main.h"
 
 /**
- * _printf - produces output according to a format
- * @format: format string containing characters and specifiers
- * Return: total number of characters printed
+ * _printf - replication of some of the features from C function printf()
+ * @format: character string of directives, flags, modifiers, & specifiers
+ * Description: This function uses the variable arguments functionality and is
+ * supposed to resemble printf().  Please review the README for more
+ * information on how it works.
+ * Return: number of characters printed
  */
 int _printf(const char *format, ...)
 {
-	va_list args;
-	const char *trav;
-	int (*pfunc)(va_list);
+	va_list args_list;
+	inventory_t *inv;
+	void (*temp_func)(inventory_t *);
 
-	int count = 0;
-
-	va_start(args, format);
-
-	if (!format || (format[0] == '%' && !format[1]))
+	if (!format)
 		return (-1);
-	if (format[0] == '%' && format[1] == ' ' && !format[2])
-		return (-1);
+	va_start(args_list, format);
+	inv = build_inventory(&args_list, format);
 
-	for (trav = format; *trav; trav++)
+	while (inv && format[inv->i] && !inv->error)
 	{
-		if (*trav == '%')
-		{
-			trav++;
-			pfunc = get_print(*trav);
-			count += (pfunc)
-						 ? pfunc(args)
-						 : _printf("%%%c", *trav);
-		}
+		inv->c0 = format[inv->i];
+		if (inv->c0 != '%')
+			write_buffer(inv);
 		else
-			count += _putchar(*trav);
+		{
+			parse_specifiers(inv);
+			temp_func = match_specifier(inv);
+			if (temp_func)
+				temp_func(inv);
+			else if (inv->c1)
+			{
+				if (inv->flag)
+					inv->flag = 0;
+				write_buffer(inv);
+			}
+			else
+			{
+				if (inv->space)
+					inv->buffer[--(inv->buf_index)] = '\0';
+				inv->error = 1;
+			}
+		}
+		inv->i++;
 	}
-	va_end(args);
-	return (count);
+	return (end_func(inv));
 }
