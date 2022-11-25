@@ -63,5 +63,5 @@ Conversion specifiers to handle: `d`, `i`, `u`, `o`, `x`, `X`
 [Task 15](/) - All the above options work well together.
 
 ### Authors
-@Barissa-Imran
-@MissJuly
+[@Barissa-Imran](https://github.com/Barissa-Imran)
+[@MissJuly](https://github.com/MissJuly)
